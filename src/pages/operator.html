@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Session operator</title>
+    <style>
+      body {
+        font: 18px system-ui;
+        max-width: 800px;
+        margin: 40px auto;
+      }
+      button {
+        padding: 12px;
+        margin: 8px;
+      }
+      pre {
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Live session intervention</h1>
+    <p>
+      Automation is paused. These buttons operate the existing browser session.
+      Restore is a training-only reauthentication stand-in.
+    </p>
+    <pre id="state"></pre>
+    <button onclick="act('restore')">Restore training session</button>
+    <button onclick="act('acknowledge')">Acknowledge notice</button>
+    <button onclick="send('/resume', {})">Return control</button>
+    <button onclick="send('/abort', {})">Abort</button>
+    <script>
+      const token = location.hash.slice(1);
+      history.replaceState(null, "", "/");
+
+      async function send(path, body) {
+        const response = await fetch(path, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+          body: JSON.stringify(body),
+        });
+        document.querySelector("pre").textContent = JSON.stringify(
+          await response.json(),
+          null,
+          2,
+        );
+      }
+
+      function act(target) {
+        send("/act", {
+          kind: "click",
+          target,
+          parameter: null,
+          reason: "open_record",
+        });
+      }
+
+      send("/state", {});
+    </script>
+  </body>
+</html>

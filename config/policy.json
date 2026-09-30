@@ -1,0 +1,18 @@
+{
+  "routes": ["/", "/workspace"],
+  "actions": ["fill", "click", "read", "finish"],
+  "controls": [
+    "memberId",
+    "search",
+    "details",
+    "balance",
+    "review",
+    "acknowledge"
+  ],
+  "humanControls": ["restore", "acknowledge"],
+  "blockedControls": ["confirm", "amount"],
+  "timeoutMs": 4000,
+  "maxSteps": 24,
+  "runTimeoutMs": 180000,
+  "handoffTimeoutMs": 120000
+}

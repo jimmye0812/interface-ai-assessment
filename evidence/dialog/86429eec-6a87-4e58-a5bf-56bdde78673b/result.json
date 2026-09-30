@@ -1,0 +1,8 @@
+{
+  "status": "failure",
+  "code": "unexpected_dialog",
+  "step": 2,
+  "expected": "results",
+  "observed": "unknown",
+  "runId": "86429eec-6a87-4e58-a5bf-56bdde78673b"
+}

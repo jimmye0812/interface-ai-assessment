@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0",
+  "capabilityVersion": "1.0.0",
+  "name": "savings-review",
+  "surface": "legacy-web",
+  "compatibility": {
+    "product": "training-servicer",
+    "version": "1",
+    "bindingVersion": "1"
+  },
+  "inputs": {
+    "memberId": {
+      "type": "string",
+      "pattern": "^[0-9]{5}$",
+      "sensitive": true
+    }
+  },
+  "outputs": {
+    "balance": {
+      "type": "decimal",
+      "currency": "USD",
+      "sensitive": true
+    }
+  },
+  "checkpoint": "review",
+  "steps": [
+    {
+      "action": {
+        "kind": "fill",
+        "target": "memberId",
+        "parameter": "memberId",
+        "reason": "enter_input"
+      },
+      "before": "search",
+      "after": "search"
+    },
+    {
+      "action": {
+        "kind": "click",
+        "target": "search",
+        "parameter": null,
+        "reason": "find_record"
+      },
+      "before": "search",
+      "after": "results"
+    },
+    {
+      "action": {
+        "kind": "click",
+        "target": "details",
+        "parameter": null,
+        "reason": "open_record"
+      },
+      "before": "results",
+      "after": "details"
+    },
+    {
+      "action": {
+        "kind": "read",
+        "target": "balance",
+        "parameter": null,
+        "reason": "read_balance"
+      },
+      "before": "details",
+      "after": "details"
+    },
+    {
+      "action": {
+        "kind": "click",
+        "target": "review",
+        "parameter": null,
+        "reason": "reach_review"
+      },
+      "before": "details",
+      "after": "review"
+    }
+  ],
+  "targeting": {
+    "frame": "iframe[title=\"Workspace\"]",
+    "uniqueness": "exactly_one",
+    "bindings": {
+      "memberId": {
+        "strategy": "label",
+        "value": "Member number",
+        "risk": "reversible"
+      },
+      "search": {
+        "strategy": "role",
+        "value": "Search",
+        "risk": "reversible"
+      },
+      "details": {
+        "strategy": "role",
+        "value": "Open member",
+        "risk": "reversible"
+      },
+      "balance": {
+        "strategy": "css",
+        "value": "output[aria-label=\"Savings balance\"]",
+        "risk": "reversible"
+      },
+      "review": {
+        "strategy": "role",
+        "value": "Review savings",
+        "risk": "reversible"
+      },
+      "acknowledge": {
+        "strategy": "role",
+        "value": "Acknowledge notice",
+        "risk": "reversible"
+      },
+      "restore": {
+        "strategy": "role",
+        "value": "Restore training session",
+        "risk": "reversible"
+      },
+      "confirm": {
+        "strategy": "role",
+        "value": "Confirm transfer",
+        "risk": "irreversible"
+      },
+      "amount": {
+        "strategy": "label",
+        "value": "Amount",
+        "risk": "irreversible"
+      }
+    }
+  },
+  "provenance": {
+    "kind": "openai",
+    "model": "gpt-4.1-mini",
+    "responseIds": [
+      "resp_03e521462c7c4629016abd38c4becc87d18b7e13ccb7142f11",
+      "resp_0adf62b819a75bdd016abd38c751bc87d1a4be1a698fb43e82",
+      "resp_0c0d267119661438016abd38c8c8dc87d1be947269d89fda27",
+      "resp_03f633042a4e075e016abd38cb4ff487d1ac1ee957d77c83bc",
+      "resp_02749d545dc45e58016abd38ccf2e487d1b639b3792fd99085"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{"time":"2026-09-30T17:39:14.194Z","runId":"2ff79cff-b8f6-4ba9-9541-7e55769c658a","event":"start","mode":"replay"}
+{"time":"2026-09-30T17:39:14.460Z","runId":"2ff79cff-b8f6-4ba9-9541-7e55769c658a","event":"step","index":0,"action":{"kind":"fill","target":"memberId","parameter":"memberId","reason":"enter_input"},"before":"search","after":"search"}
+{"time":"2026-09-30T17:39:14.655Z","runId":"2ff79cff-b8f6-4ba9-9541-7e55769c658a","event":"step","index":1,"action":{"kind":"click","target":"search","parameter":null,"reason":"find_record"},"before":"search","after":"results"}
+{"time":"2026-09-30T17:39:14.755Z","runId":"2ff79cff-b8f6-4ba9-9541-7e55769c658a","event":"step","index":2,"action":{"kind":"click","target":"details","parameter":null,"reason":"open_record"},"before":"results","after":"details"}
+{"time":"2026-09-30T17:39:14.861Z","runId":"2ff79cff-b8f6-4ba9-9541-7e55769c658a","event":"step","index":3,"action":{"kind":"read","target":"balance","parameter":null,"reason":"read_balance"},"before":"details","after":"details"}
+{"time":"2026-09-30T17:39:14.953Z","runId":"2ff79cff-b8f6-4ba9-9541-7e55769c658a","event":"step","index":4,"action":{"kind":"click","target":"review","parameter":null,"reason":"reach_review"},"before":"details","after":"review"}
+{"time":"2026-09-30T17:39:14.992Z","runId":"2ff79cff-b8f6-4ba9-9541-7e55769c658a","event":"checkpoint_verified","state":"review","output":"balance","matched":true}
+{"time":"2026-09-30T17:39:14.992Z","runId":"2ff79cff-b8f6-4ba9-9541-7e55769c658a","event":"complete","status":"success"}

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Member workspace</title>
+    <style>
+      body {
+        font: 18px system-ui;
+        background: #f4f7fb;
+        padding: 28px;
+        color: #16304a;
+      }
+      td {
+        padding: 12px;
+      }
+      button,
+      input {
+        font: inherit;
+        padding: 8px;
+      }
+      button {
+        cursor: pointer;
+      }
+      h2 {
+        color: #154d67;
+      }
+    </style>
+  </head>
+  <body>
+    <main></main>
+    <script>
+      const scenario = __SCENARIO__;
+      let member = "";
+      let balance = "";
+      let restored = false;
+      const root = document.querySelector("main");
+
+      function show(title, body) {
+        root.innerHTML = `
+          <h2>${title}</h2>
+          <table>
+            <tbody>${body}</tbody>
+          </table>
+        `;
+      }
+
+      function search() {
+        show(
+          "Member search",
+          `
+            <tr>
+              <td><label for="m">Member number</label></td>
+              <td><input id="m" autocomplete="off" /></td>
+            </tr>
+            <tr>
+              <td><button onclick="lookup()">Search</button></td>
+            </tr>
+          `,
+        );
+      }
+
+      function lookup() {
+        member = document.querySelector("input").value;
+        show("Loading", "");
+        setTimeout(
+          () => {
+            if (!/^\d{5}$/.test(member) || scenario === "validation")
+              return show("Invalid member number", "");
+            if (member === "99999" || scenario === "not_found")
+              return show("Member not found", "");
+            if (scenario === "denied") return show("Permission denied", "");
+            if (scenario === "app_error")
+              return show("Application unavailable", "");
+            if (scenario === "expired" && !restored)
+              return show(
+                "Session expired",
+                `
+                  <tr>
+                    <td>
+                      <button onclick="restored = true; results()">
+                        Restore training session
+                      </button>
+                    </td>
+                  </tr>
+                `,
+              );
+            if (scenario === "interstitial")
+              return show(
+                "Service notice",
+                `
+                  <tr>
+                    <td>
+                      <button onclick="results()">Acknowledge notice</button>
+                    </td>
+                  </tr>
+                `,
+              );
+            if (scenario === "dialog") alert("Unexpected confirmation");
+            results();
+          },
+          scenario === "slow" ? 1200 : 80,
+        );
+      }
+
+      function results() {
+        balance = member === "12345" ? "1250.75" : "842.10";
+        show(
+          "Search results",
+          `
+            <tr>
+              <td>Matching member</td>
+              <td><button onclick="details()">Open member</button></td>
+            </tr>
+          `,
+        );
+      }
+
+      function details() {
+        show(
+          "Member details",
+          `
+            <tr>
+              <th>Savings balance</th>
+              <td><output aria-label="Savings balance">${balance}</output></td>
+            </tr>
+            <tr>
+              <td><button onclick="review()">Review savings</button></td>
+            </tr>
+          `,
+        );
+      }
+
+      function commit() {
+        show("Transaction committed", "");
+      }
+
+      function review() {
+        show(
+          "Savings review",
+          `
+            <tr>
+              <th>Current savings balance</th>
+              <td><output aria-label="Savings balance">${balance}</output></td>
+            </tr>
+            <tr>
+              <td><button onclick="commit()">Confirm transfer</button></td>
+            </tr>
+          `,
+        );
+      }
+
+      search();
+    </script>
+  </body>
+</html>

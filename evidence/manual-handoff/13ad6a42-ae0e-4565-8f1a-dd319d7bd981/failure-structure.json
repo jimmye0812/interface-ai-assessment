@@ -1,0 +1,41 @@
+{
+  "state": "expired",
+  "controls": [
+    "restore"
+  ],
+  "frame": "Workspace",
+  "structure": [
+    {
+      "tag": "MAIN",
+      "role": null
+    },
+    {
+      "tag": "H2",
+      "role": null
+    },
+    {
+      "tag": "TABLE",
+      "role": null
+    },
+    {
+      "tag": "TBODY",
+      "role": null
+    },
+    {
+      "tag": "TR",
+      "role": null
+    },
+    {
+      "tag": "TD",
+      "role": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null
+    },
+    {
+      "tag": "SCRIPT",
+      "role": null
+    }
+  ]
+}

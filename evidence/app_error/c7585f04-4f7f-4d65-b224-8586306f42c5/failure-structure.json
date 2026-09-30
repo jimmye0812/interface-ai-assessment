@@ -1,0 +1,27 @@
+{
+  "state": "app_error",
+  "controls": [],
+  "frame": "Workspace",
+  "structure": [
+    {
+      "tag": "MAIN",
+      "role": null
+    },
+    {
+      "tag": "H2",
+      "role": null
+    },
+    {
+      "tag": "TABLE",
+      "role": null
+    },
+    {
+      "tag": "TBODY",
+      "role": null
+    },
+    {
+      "tag": "SCRIPT",
+      "role": null
+    }
+  ]
+}

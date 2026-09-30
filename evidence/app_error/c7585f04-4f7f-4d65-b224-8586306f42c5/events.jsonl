@@ -1,0 +1,4 @@
+{"time":"2026-09-30T16:29:46.781Z","runId":"c7585f04-4f7f-4d65-b224-8586306f42c5","event":"start","mode":"replay"}
+{"time":"2026-09-30T16:29:46.881Z","runId":"c7585f04-4f7f-4d65-b224-8586306f42c5","event":"step","index":0,"action":{"kind":"fill","target":"memberId","parameter":"memberId","reason":"enter_input"},"before":"search","after":"search"}
+{"time":"2026-09-30T16:29:47.095Z","runId":"c7585f04-4f7f-4d65-b224-8586306f42c5","event":"intervention_requested","code":"app_error","step":1,"expected":"results","observation":{"state":"app_error","controls":[],"frame":"Workspace","structure":[{"tag":"MAIN","role":null},{"tag":"H2","role":null},{"tag":"TABLE","role":null},{"tag":"TBODY","role":null},{"tag":"SCRIPT","role":null}]},"capability":"savings-review"}
+{"time":"2026-09-30T16:29:47.096Z","runId":"c7585f04-4f7f-4d65-b224-8586306f42c5","event":"complete","status":"failure"}

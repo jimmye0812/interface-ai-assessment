@@ -1,0 +1,8 @@
+{"time":"2026-09-30T16:29:42.694Z","runId":"60374519-607c-4efe-be86-1b1558459088","event":"start","mode":"replay"}
+{"time":"2026-09-30T16:29:42.829Z","runId":"60374519-607c-4efe-be86-1b1558459088","event":"step","index":0,"action":{"kind":"fill","target":"memberId","parameter":"memberId","reason":"enter_input"},"before":"search","after":"search"}
+{"time":"2026-09-30T16:29:43.054Z","runId":"60374519-607c-4efe-be86-1b1558459088","event":"step","index":1,"action":{"kind":"click","target":"search","parameter":null,"reason":"find_record"},"before":"search","after":"results"}
+{"time":"2026-09-30T16:29:43.161Z","runId":"60374519-607c-4efe-be86-1b1558459088","event":"step","index":2,"action":{"kind":"click","target":"details","parameter":null,"reason":"open_record"},"before":"results","after":"details"}
+{"time":"2026-09-30T16:29:43.249Z","runId":"60374519-607c-4efe-be86-1b1558459088","event":"step","index":3,"action":{"kind":"read","target":"balance","parameter":null,"reason":"read_balance"},"before":"details","after":"details"}
+{"time":"2026-09-30T16:29:43.355Z","runId":"60374519-607c-4efe-be86-1b1558459088","event":"step","index":4,"action":{"kind":"click","target":"review","parameter":null,"reason":"reach_review"},"before":"details","after":"review"}
+{"time":"2026-09-30T16:29:43.396Z","runId":"60374519-607c-4efe-be86-1b1558459088","event":"checkpoint_verified","state":"review","output":"balance","matched":true}
+{"time":"2026-09-30T16:29:43.396Z","runId":"60374519-607c-4efe-be86-1b1558459088","event":"complete","status":"success"}

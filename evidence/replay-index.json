@@ -1,0 +1,44 @@
+[
+  {
+    "scenario": "normal",
+    "status": "success",
+    "evidence": "evidence/normal/60374519-607c-4efe-be86-1b1558459088",
+    "simulatedHuman": false
+  },
+  {
+    "scenario": "not_found",
+    "status": "business_outcome",
+    "evidence": "evidence/not_found/b16c8b17-ca9e-4ad8-9d32-1c528a19b578",
+    "simulatedHuman": false
+  },
+  {
+    "scenario": "interstitial",
+    "status": "success",
+    "evidence": "evidence/interstitial/ea9c0e97-3672-4285-baff-5f7e6b3f92d4",
+    "simulatedHuman": false
+  },
+  {
+    "scenario": "slow",
+    "status": "success",
+    "evidence": "evidence/slow/39a69e58-21e3-43ba-8777-67dbec257e29",
+    "simulatedHuman": false
+  },
+  {
+    "scenario": "app_error",
+    "status": "failure",
+    "evidence": "evidence/app_error/c7585f04-4f7f-4d65-b224-8586306f42c5",
+    "simulatedHuman": false
+  },
+  {
+    "scenario": "dialog",
+    "status": "failure",
+    "evidence": "evidence/dialog/86429eec-6a87-4e58-a5bf-56bdde78673b",
+    "simulatedHuman": false
+  },
+  {
+    "scenario": "expired",
+    "status": "success",
+    "evidence": "evidence/expired/37006f14-99aa-47d5-949e-0b0eab0185bd",
+    "simulatedHuman": true
+  }
+]

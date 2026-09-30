@@ -1,0 +1,3 @@
+{"time":"2026-09-30T16:29:43.554Z","runId":"b16c8b17-ca9e-4ad8-9d32-1c528a19b578","event":"start","mode":"replay"}
+{"time":"2026-09-30T16:29:43.663Z","runId":"b16c8b17-ca9e-4ad8-9d32-1c528a19b578","event":"step","index":0,"action":{"kind":"fill","target":"memberId","parameter":"memberId","reason":"enter_input"},"before":"search","after":"search"}
+{"time":"2026-09-30T16:29:43.873Z","runId":"b16c8b17-ca9e-4ad8-9d32-1c528a19b578","event":"complete","status":"business_outcome"}

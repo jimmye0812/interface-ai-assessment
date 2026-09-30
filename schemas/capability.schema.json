@@ -1,0 +1,328 @@
+{
+  "$ref": "#/definitions/Capability",
+  "definitions": {
+    "Capability": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "type": "string",
+          "const": "1.0"
+        },
+        "capabilityVersion": {
+          "type": "string",
+          "const": "1.0.0"
+        },
+        "name": {
+          "type": "string",
+          "const": "savings-review"
+        },
+        "surface": {
+          "type": "string",
+          "const": "legacy-web"
+        },
+        "compatibility": {
+          "type": "object",
+          "properties": {
+            "product": {
+              "type": "string",
+              "const": "training-servicer"
+            },
+            "version": {
+              "type": "string",
+              "const": "1"
+            },
+            "bindingVersion": {
+              "type": "string",
+              "const": "1"
+            }
+          },
+          "required": [
+            "product",
+            "version",
+            "bindingVersion"
+          ],
+          "additionalProperties": false
+        },
+        "inputs": {
+          "type": "object",
+          "properties": {
+            "memberId": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "string"
+                },
+                "pattern": {
+                  "type": "string",
+                  "const": "^[0-9]{5}$"
+                },
+                "sensitive": {
+                  "type": "boolean",
+                  "const": true
+                }
+              },
+              "required": [
+                "type",
+                "pattern",
+                "sensitive"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "memberId"
+          ],
+          "additionalProperties": false
+        },
+        "outputs": {
+          "type": "object",
+          "properties": {
+            "balance": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "decimal"
+                },
+                "currency": {
+                  "type": "string",
+                  "const": "USD"
+                },
+                "sensitive": {
+                  "type": "boolean",
+                  "const": true
+                }
+              },
+              "required": [
+                "type",
+                "currency",
+                "sensitive"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "balance"
+          ],
+          "additionalProperties": false
+        },
+        "checkpoint": {
+          "type": "string",
+          "const": "review"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "fill",
+                      "click",
+                      "read",
+                      "finish"
+                    ]
+                  },
+                  "target": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "memberId",
+                          "search",
+                          "details",
+                          "balance",
+                          "review",
+                          "amount",
+                          "confirm",
+                          "acknowledge",
+                          "restore"
+                        ]
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "parameter": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "memberId"
+                        ]
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "enum": [
+                      "enter_input",
+                      "find_record",
+                      "open_record",
+                      "read_balance",
+                      "reach_review",
+                      "goal_complete"
+                    ]
+                  }
+                },
+                "required": [
+                  "kind",
+                  "target",
+                  "parameter",
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              "before": {
+                "type": "string",
+                "enum": [
+                  "search",
+                  "results",
+                  "details",
+                  "review",
+                  "not_found",
+                  "validation",
+                  "denied",
+                  "expired",
+                  "interstitial",
+                  "loading",
+                  "app_error",
+                  "unknown"
+                ]
+              },
+              "after": {
+                "$ref": "#/definitions/Capability/properties/steps/items/properties/before"
+              }
+            },
+            "required": [
+              "action",
+              "before",
+              "after"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 24
+        },
+        "targeting": {
+          "type": "object",
+          "properties": {
+            "frame": {
+              "type": "string",
+              "const": "iframe[title=\"Workspace\"]"
+            },
+            "uniqueness": {
+              "type": "string",
+              "const": "exactly_one"
+            },
+            "bindings": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "strategy": {
+                    "type": "string",
+                    "enum": [
+                      "label",
+                      "role",
+                      "css"
+                    ]
+                  },
+                  "value": {
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "risk": {
+                    "type": "string",
+                    "enum": [
+                      "reversible",
+                      "irreversible"
+                    ]
+                  }
+                },
+                "required": [
+                  "strategy",
+                  "value",
+                  "risk"
+                ],
+                "additionalProperties": false
+              },
+              "propertyNames": {
+                "enum": [
+                  "memberId",
+                  "search",
+                  "details",
+                  "balance",
+                  "review",
+                  "amount",
+                  "confirm",
+                  "acknowledge",
+                  "restore"
+                ]
+              }
+            }
+          },
+          "required": [
+            "frame",
+            "uniqueness",
+            "bindings"
+          ],
+          "additionalProperties": false
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "openai",
+                "fixture"
+              ]
+            },
+            "model": {
+              "type": "string",
+              "maxLength": 100
+            },
+            "responseIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 100
+              }
+            }
+          },
+          "required": [
+            "kind",
+            "model",
+            "responseIds"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "capabilityVersion",
+        "name",
+        "surface",
+        "compatibility",
+        "inputs",
+        "outputs",
+        "checkpoint",
+        "steps",
+        "targeting",
+        "provenance"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
